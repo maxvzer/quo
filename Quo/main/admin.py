@@ -7,7 +7,6 @@
 """
 
 from django.contrib import admin
-from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
 from .models import Person, MilitaryCommissariat, Grade, DegreeOfFitness,  \
                     Faculty,  Group, Department, OKSO, Year, VUS
