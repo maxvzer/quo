@@ -23,7 +23,7 @@ from Quo.constants import DEPARTMENT_TYPES, MILITARY_COMISSARIAT_TYPES, GRADE_TY
 
 class IndexView(TemplateView):
     template_name = "main/index.html"
-    path = 'C:/Users/Sedlerr/work/Quo/LOLSave.xlsx'
+    path = 'D:\Programs\Python\Projects\quo\LOLSave.xlsx'
 
     def post(self, request, *args, **kwargs):
         if self.request.method == 'POST':
@@ -643,7 +643,7 @@ def find_counter_in_list(name, list_of_dict):
     n = len(list_of_dict)
     count = 0
     while count < n:
-        sleeve = list_of_dict[count]['first_name'] + ' ' + list_of_dict[count]['last_name'] + ' ' + \
+        sleeve = list_of_dict[count]['last_name'] + ' ' + list_of_dict[count]['first_name'] + ' ' +\
                  list_of_dict[count]['middle_name']
         if name == sleeve:
             return count
@@ -760,6 +760,14 @@ def table_submission_of_an_application(list_of_dict,path):
                            shrink_to_fit=False,
                            indent=0)
 
+    # выравнивание (ыравние по центру)
+    alignment3 = Alignment(horizontal='left',  # выравнивание по горизонтали
+                           vertical='center',  # выравнивание по вертикали
+                           text_rotation=0,
+                           wrap_text=False,  # перенос текста
+                           shrink_to_fit=False,
+                           indent=0)
+
     # границы заливки (заливка таблицы)
     border1 = Border(left=Side(border_style='thin',
                                color='FF000000'),
@@ -859,7 +867,7 @@ def table_submission_of_an_application(list_of_dict,path):
         first_last_three_names = []
         while count < n:
             if group == list_full_group[count]:
-                sleeve = list_of_dict[count]['first_name'] + ' ' + list_of_dict[count]['last_name'] + ' ' +\
+                sleeve = list_of_dict[count]['last_name'] + ' ' + list_of_dict[count]['first_name'] + ' ' +\
                          list_of_dict[count]['middle_name']
                 first_last_three_names.append(sleeve)
             count += 1
@@ -877,7 +885,7 @@ def table_submission_of_an_application(list_of_dict,path):
             cell_prop = ws1[cell_cell]
             cell_prop.value = name
             cell_prop.font = font3
-            cell_prop.alignment = alignment2
+            cell_prop.alignment = alignment3
             cell_prop.border = border1
 
             cell_cell = 'C' + str(count_for_print)
@@ -1065,7 +1073,7 @@ def table_focus_on_swat(list_of_dict,path):
             first_last_three_names = []
             while count < n:
                 if (voenk == list_of_dict[count]['title']) and (group == list_full_group[count]):
-                    sleeve = list_of_dict[count]['first_name'] + ' ' + list_of_dict[count]['last_name'] + ' ' + \
+                    sleeve = list_of_dict[count]['last_name'] + ' ' + list_of_dict[count]['first_name'] + ' ' +\
                              list_of_dict[count]['middle_name']
                     first_last_three_names.append(sleeve)
                 count += 1
@@ -1295,8 +1303,8 @@ def big_list(list_of_dict, path):
         count = 0
         first_last_three_names = []
         while count < n:
-            if group == list_full_group[count] :
-                sleeve = list_of_dict[count]['first_name'] + ' ' + list_of_dict[count]['last_name'] + ' ' + \
+            if group == list_full_group[count]:
+                sleeve = list_of_dict[count]['last_name'] + ' ' + list_of_dict[count]['first_name'] + ' ' +\
                          list_of_dict[count]['middle_name']
                 first_last_three_names.append(sleeve)
             count += 1
@@ -1326,7 +1334,7 @@ def big_list(list_of_dict, path):
 
             cell_cell = 'D' + str(count_for_print)
             cell_prop = ws1[cell_cell]
-            cell_prop.value = list_of_dict[count_from_names]['birth_date']
+            cell_prop.value = str(list_of_dict[count_from_names]['birth_date'])
             cell_prop.font = font1
             cell_prop.alignment = alignment_left
             cell_prop.border = border1
@@ -1686,7 +1694,7 @@ def list_for_vus(list_of_dict,path):
                     first_last_three_names = []
                     while count < n:
                         if (vus == list_of_dict_year[count]['VUS']) and (group == list_full_group[count]):
-                            sleeve = list_of_dict_year[count]['first_name'] + ' ' + list_of_dict_year[count]['last_name'] + ' ' + \
+                            sleeve = list_of_dict_year[count]['last_name'] + ' ' + list_of_dict_year[count]['first_name'] + ' '+\
                                      list_of_dict_year[count]['middle_name']
                             first_last_three_names.append(sleeve)
                         count += 1
@@ -2054,12 +2062,12 @@ def table_military_training(list_of_dict,path):
                                      color='FF000000'))
 
     # Ширина колонок
-    ws1.column_dimensions['A'].width = 4
-    ws1.column_dimensions['B'].width = 18
+    ws1.column_dimensions['A'].width = 5
+    ws1.column_dimensions['B'].width = 25
     ws1.column_dimensions['C'].width = 11
     ws1.column_dimensions['D'].width = 11
-    ws1.column_dimensions['E'].width = 31
-    ws1.column_dimensions['F'].width = 10
+    ws1.column_dimensions['E'].width = 35
+    ws1.column_dimensions['F'].width = 9
 
     ws1.merge_cells('D1:F1')
     cell_prop = ws1['D1']
@@ -2217,7 +2225,7 @@ def table_military_training(list_of_dict,path):
         first_last_three_names = []
         while count < n:
             if group == list_full_group[count]:
-                sleeve = list_of_dict[count]['first_name'] + ' ' + list_of_dict[count]['last_name'] + ' ' + \
+                sleeve = list_of_dict[count]['last_name'] + ' ' + list_of_dict[count]['first_name'] + ' ' +\
                          list_of_dict[count]['middle_name']
                 first_last_three_names.append(sleeve)
             count += 1
@@ -2547,5 +2555,250 @@ def table_military_training(list_of_dict,path):
     cell_prop.font = font1
     cell_prop.alignment = alignment_width
     count_for_print += 1
+
+    wb.save(lol_save)
+
+
+def table_any(list_of_dict,path):
+    lol_save = path
+    lol_sheet = 'Worksheet'
+    wb = openpyxl.Workbook()
+    ws1 = wb.active
+    ws1.title = lol_sheet
+
+    # Шрифты для списка студентов(самый верх) и шапки колонки (Жирный)
+    font_zirn = Font(name='Times New Roman',
+                 size=14,
+                 bold=True,  # жирный
+                 italic=False,  # курсив
+                 vertAlign='baseline',  # по какому краю выравнивать
+                 # (['subscript', 'baseline', 'superscript'])
+                 underline='none',  # подчеркивание написанного
+                 strike=False,  # зачеркнуть
+                 color='FF000000')
+
+    # шрифты для подавших заявление на ВК2..... (не жирный)
+    font1 = Font(name='Times New Roman',
+                 size=14,
+                 bold=False,  # жирный
+                 italic=False,  # курсив
+                 vertAlign='baseline',  # по какому краю выравнивать
+                 # (['subscript', 'baseline', 'superscript'])
+                 underline='none',  # подчеркивание написанного
+                 strike=False,  # зачеркнуть
+                 color='FF000000')
+
+    # выравнивание для шапки таблицы
+    alignment_centre = Alignment(horizontal='center',  # выравнивание по горизонтали
+                           vertical='center',  # выравнивание по вертикали
+                           text_rotation=0,
+                           wrap_text=False,  # перенос текста
+                           shrink_to_fit=False,
+                           indent=0)
+
+    # выравнивание (ыравние по левый)
+    alignment_left = Alignment(horizontal='left',  # выравнивание по горизонтали
+                           vertical='center',  # выравнивание по вертикали
+                           text_rotation=0,
+                           wrap_text=True,  # перенос текста
+                           shrink_to_fit=False,
+                           indent=0)
+
+    # границы заливки (заливка таблицы)
+    border1 = Border(left=Side(border_style='thin',
+                               color='FF000000'),
+                     right=Side(border_style='thin',
+                                color='FF000000'),
+                     top=Side(border_style='thin',
+                              color='FF000000'),
+                     bottom=Side(border_style='thin',
+                                 color='FF000000'),
+                     diagonal=Side(border_style=None,
+                                   color='FF000000'),
+                     diagonal_direction=0,
+                     outline=Side(border_style=None,
+                                  color='FF000000'),
+                     vertical=Side(border_style=None,
+                                   color='FF000000'),
+                     horizontal=Side(border_style=None,
+                                     color='FF000000'))
+
+    # Ширина колонок
+    ws1.column_dimensions['A'].width = 8
+    ws1.column_dimensions['B'].width = 45
+    ws1.column_dimensions['C'].width = 13
+    ws1.column_dimensions['D'].width = 80
+    ws1.column_dimensions['E'].width = 80
+    ws1.column_dimensions['F'].width = 80
+    ws1.column_dimensions['G'].width = 80
+    ws1.column_dimensions['H'].width = 80
+    ws1.column_dimensions['I'].width = 80
+    ws1.column_dimensions['J'].width = 80
+    ws1.column_dimensions['K'].width = 80
+    ws1.column_dimensions['L'].width = 80
+    ws1.column_dimensions['M'].width = 80
+
+    list_all_keys = ['last_name',
+                     'first_name',
+                     'middle_name',
+                     'birth_date',
+                     'faculty',
+                     'department',
+                     'group',
+
+                     'grade',
+                     'year',
+                     'birth_place',
+                     'OKSO_letters',
+                     'title',
+                     'degree_of_fitness',
+                     'document_number',
+
+                     'issued_by',
+                     'VUS',
+                     'address',
+                     'OKSO'
+                     ]
+
+    list_all_keys_width = [15, 15, 15, 11, 4, 4, 3,
+                           12, 10, 40, 40, 80, 20, 100,
+                           38, 9, 70, 10]
+
+    
+
+    # Заполнение клонок
+    ws1.merge_cells('A1:D1')
+    cell_prop = ws1['A1']
+    cell_prop.value = u'СПИСОК СТУДЕНТОВ'
+    cell_prop.font = font_zirn
+    cell_prop.alignment = alignment_centre
+
+    ws1.merge_cells('A2:D2')
+    cell_prop = ws1['A2']
+    cell_prop.value = u'проходящих военное обучение по программам подготовки офицеров запаса на ВК №2'
+    cell_prop.font = font1
+    cell_prop.alignment = alignment_centre
+
+    ws1.merge_cells('A3:D3')
+    cell_prop = ws1['A3']
+    cell_prop.value = u'подлежащим направлению на учебные сборы в 2016 году'
+    cell_prop.font = font1
+    cell_prop.alignment = alignment_centre
+
+    cell_prop = ws1['A5']
+    cell_prop.value = u'№'
+    cell_prop.font = font_zirn
+    cell_prop.alignment = alignment_centre
+    cell_prop.border = border1
+
+    cell_prop = ws1['B5']
+    cell_prop.value = u'ФИО'
+    cell_prop.font = font_zirn
+    cell_prop.alignment = alignment_centre
+    cell_prop.border = border1
+
+    cell_prop = ws1['C5']
+    cell_prop.value = u'Группа'
+    cell_prop.font = font_zirn
+    cell_prop.alignment = alignment_centre
+    cell_prop.border = border1
+
+    cell_prop = ws1['D5']
+    cell_prop.value = u'Военкомат'
+    cell_prop.font = font_zirn
+    cell_prop.alignment = alignment_centre
+    cell_prop.border = border1
+
+    # получение списка военкоматов и сортировка его
+    s_voenkom = []
+    count = 0
+    n = len(list_of_dict)
+    while count < n:
+        if not (list_of_dict[count]['title'] in s_voenkom):
+            s_voenkom.append(list_of_dict[count]['title'])
+        count += 1
+    s_voenkom.sort()
+
+    # получение списка групп и сортировка его
+    list_of_group = []
+    count = 0
+
+    list_full_group = []
+    while count < n:
+        my_gr = ''
+        my_gr = list_of_dict[count]['faculty'] + list_of_dict[count]['department'] +\
+        '-' + list_of_dict[count]['group']
+        list_full_group.append(my_gr)
+        count += 1
+
+    count = 0
+    while count < n:
+        if not (list_full_group[count] in list_of_group):
+            list_of_group.append(list_full_group[count])
+        count += 1
+    list_of_group.sort()
+
+    # вывод таблицы
+    count_for_print = 6
+    for voenk in s_voenkom:
+        for group in list_of_group:
+            count = 0
+            first_last_three_names = []
+            while count < n:
+                if (voenk == list_of_dict[count]['title']) and (group == list_full_group[count]):
+                    sleeve = list_of_dict[count]['last_name'] + ' ' + list_of_dict[count]['first_name'] + ' ' +\
+                             list_of_dict[count]['middle_name']
+                    first_last_three_names.append(sleeve)
+                count += 1
+            first_last_three_names.sort()
+            for name in first_last_three_names:
+                cell_cell = 'A' + str(count_for_print)
+                cell_prop = ws1[cell_cell]
+                cell_prop.value = count_for_print - 5
+                cell_prop.font = font1
+                cell_prop.alignment = alignment_centre
+                cell_prop.border = border1
+
+                cell_cell = 'B' + str(count_for_print)
+                cell_prop = ws1[cell_cell]
+                cell_prop.value = name
+                cell_prop.font = font1
+                cell_prop.alignment = alignment_left
+                cell_prop.border = border1
+
+                cell_cell = 'C' + str(count_for_print)
+                cell_prop = ws1[cell_cell]
+                cell_prop.value = group
+                cell_prop.font = font1
+                cell_prop.alignment = alignment_left
+                cell_prop.border = border1
+
+                cell_cell = 'D' + str(count_for_print)
+                cell_prop = ws1[cell_cell]
+                cell_prop.value = voenk
+                cell_prop.font = font1
+                cell_prop.alignment = alignment_left
+                cell_prop.border = border1
+
+                count_for_print += 1
+
+    # Конец
+    count_for_print += 1
+    cell_cell = 'A' + str(count_for_print) + ':' + 'D' + str(count_for_print)
+    ws1.merge_cells(cell_cell)
+    cell_cell = 'A' + str(count_for_print)
+    cell_prop = ws1[cell_cell]
+    cell_prop.value = u'Начальник военной кафедры №2'
+    cell_prop.font = font1
+    cell_prop.alignment = alignment_centre
+
+    count_for_print += 1
+    cell_cell = 'A' + str(count_for_print) + ':' + 'D' + str(count_for_print)
+    ws1.merge_cells(cell_cell)
+    cell_cell = 'A' + str(count_for_print)
+    cell_prop = ws1[cell_cell]
+    cell_prop.value = u'полковник                                   В. Кузнецов'
+    cell_prop.font = font1
+    cell_prop.alignment = alignment_centre
 
     wb.save(lol_save)
