@@ -1,0 +1,168 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="../../static/main/css/main.css" >
+	</head>
+
+	<body>
+		<section class="mainWrapper">
+		    <div class="col-lg-12 mainBox">
+			    <div class="contentBox raw">
+                    <div class="row">
+					    <h1 class="viewTitle col-lg-6 col-sm-6">Выбрать фильтры</h1>
+				    </div>
+                    <form method="post" action="">  {% csrf_token %}
+					    <div class="col-lg-6 col-sm-6 col-xs-12">
+						    <div class="content">
+						        <ul class="viewTitle list">
+
+							        <li class="list__item">
+                                        <h2>Категория годности</h2>
+                                        <select class="selectpicker " id="degree" name="degree">
+                                            <option value="None">Без фильтра</option>
+                                            {% for degree in degrees %}
+                                                <option value="{{degree.degree_of_fitness}}">{{degree.get_degree_of_fitness_display}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+
+                               		<li class="list__item">
+                                        <h2>Направление</h2>
+                                        <select class="selectpicker " id="grade" name="grade">
+                                            <option value="None">Без фильтра</option>
+                                            {% for grade in grades %}
+                                                <option value="{{grade.grade}}">{{grade.get_grade_display}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+
+                                    <li class="list__item">
+                                        <h2>ОКСО</h2>
+                                        <select class="selectpicker " id="okso" name="okso">
+                                            <option value="None">Без фильтра</option>
+                                            {% for okso in oksos %}
+                                                <option value="{{okso.OKSO}}">{{okso.OKSO}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+
+                                    <li class="list__item">
+                                        <h2>Военкомат</h2>
+                                        <select class="selectpicker " id="military" name="military">
+                                            <option value="None">Без фильтра</option>
+                                            {% for military in militarys %}
+                                                <option value="{{military.title}}">{{military.get_title_display}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+
+                                    <li class="list__item">
+                                        <h2>Год обучения</h2>
+                                        <select class="selectpicker " id="year" name="year">
+                                            <option value="None">Без фильтра</option>
+                                            {% for year in years %}
+                                                <option value="{{year.year}}">{{year.year}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+
+                                    <li class="list__item">
+                                        <h2>ВУС</h2>
+                                        <select class="selectpicker " id="VUS" name="VUS">
+                                            <option value="None">Без фильтра</option>
+                                            {% for VUS in VUSes %}
+                                                <option value="{{VUS.VUS}}">{{VUS.VUS}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+                                </ul>
+					        </div>
+					    </div>
+
+					    <div class="col-lg-6 col-sm-6 col-xs-12">
+						    <div class="content">
+						        <ul class="viewTitle list">
+
+                                    <li class="list__item">
+                                        <h2>Факультет</h2>
+                                        <select class="selectpicker " id="faculty" name="faculty">
+                                            <option value="None">Без фильтра</option>
+                                            {% for faculty in facultys %}
+                                                <option value="{{faculty.faculty}}">{{faculty.get_faculty_display}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </li>
+
+                                    <li class="list__item">
+                                        <h2>Кафедра</h2>
+                                        <select class="selectpicker " id="depatment" name="department">
+                                            <option value="None">Без фильтра</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            </select>
+                                    </li>
+
+                                    <li class="list__item">
+                                        <h2>Группа</h2>
+                                        <select class="selectpicker " id="group" name="group">
+                                            <option value="None">Без фильтра</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="21">31</option>
+                                            <option value="22">32</option>
+                                            <option value="23">33</option>
+                                            <option value="21">41</option>
+                                            <option value="22">42</option>
+                                            <option value="23">43</option>
+                                            <option value="21">51</option>
+                                            <option value="22">52</option>
+                                            <option value="23">53</option>
+                                            <option value="21">61</option>
+                                            <option value="22">62</option>
+                                            <option value="23">63</option>
+                                            <option value="21">71</option>
+                                            <option value="22">72</option>
+                                            <option value="23">73</option>
+                                            <option value="21">81</option>
+                                            <option value="22">82</option>
+                                            <option value="23">83</option>
+                                            </select>
+                                    </li>
+						        </ul>
+					        </div>
+					    </div>
+                            <div class="viewSubtitle" style="justify-content: flex-end">
+					            <button type="submit" data-hover-text="Продолжить" class="coralButton-hover" >Далее</button>
+				            </div>
+
+                    </form>
+			    </div>
+		    </div>
+	    </section>
+
+			<script type="text/javascript" src="../../static/main/js/jquery-2.1.3.min.js"></script>
+			<script type="text/javascript" src="../../static/main/js/bootstrap.min.js"></script>
+	<script charset="utf-8">
+	$('.selectpicker').selectpicker({
+			style: 'btn-info',
+			size: 4
+	});
+
+	</script>
+    </body>
+</html>

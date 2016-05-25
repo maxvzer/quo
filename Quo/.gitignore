@@ -3,8 +3,4 @@
 *.DS_Store
 *.idea
 *.xml.
-.idea/
-Quo/.idea/
 Quo/localsettings.py
-main/migrations/
-
