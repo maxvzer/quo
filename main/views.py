@@ -16,6 +16,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.db import connection
 from django.db.models import Q
+import datetime
 
 # Create your views here.
 from Quo.constants import DEPARTMENT_TYPES, MILITARY_COMISSARIAT_TYPES, GRADE_TYPES, VUS_TYPES
@@ -23,7 +24,7 @@ from Quo.constants import DEPARTMENT_TYPES, MILITARY_COMISSARIAT_TYPES, GRADE_TY
 
 class IndexView(TemplateView):
     template_name = "main/index.html"
-    path = 'C:/Users/Sedlerr/work/Quo/LOLSave.xlsx'
+    path = 'C:/Users/Sedlerr/work/Quo/'
 
     def post(self, request, *args, **kwargs):
         if self.request.method == 'POST':
@@ -913,6 +914,8 @@ def table_submission_of_an_application(list_of_dict,path):
     cell_prop.font = font3
     cell_prop.alignment = alignment1
 
+    date_save = str(datetime.datetime.now())
+    lol_save += 'Applicants/' + date_save + '.xlsx'
     wb.save(lol_save)
 
 def table_focus_on_swat(list_of_dict,path):
@@ -1120,6 +1123,8 @@ def table_focus_on_swat(list_of_dict,path):
     cell_prop.font = font1
     cell_prop.alignment = alignment_centre
 
+    date_save = str(datetime.datetime.now())
+    lol_save += 'Applicants/' + date_save + '.xlsx'
     wb.save(lol_save)
 
 
@@ -1382,6 +1387,8 @@ def big_list(list_of_dict, path):
 
             count_for_print += 1
 
+    date_save = str(datetime.datetime.now())
+    lol_save += 'Applicants/' + date_save + '.xlsx'
     wb.save(lol_save)
 
 def list_for_vus(list_of_dict,path):
@@ -1785,9 +1792,8 @@ def list_for_vus(list_of_dict,path):
         count_cell_page = 0
         zvanie += 1
 
-
-
-
+    date_save = str(datetime.datetime.now())
+    lol_save += 'Applicants/' + date_save + '.xlsx'
     wb.save(lol_save)
 
 def print_table_header_military_training(ws, cell_pos):
@@ -2548,6 +2554,8 @@ def table_military_training(list_of_dict,path):
     cell_prop.alignment = alignment_width
     count_for_print += 1
 
+    date_save = str(datetime.datetime.now())
+    lol_save += 'Applicants/' + date_save + '.xlsx'
     wb.save(lol_save)
 
 def table_any(list_of_dict,path):
@@ -2792,5 +2800,7 @@ def table_any(list_of_dict,path):
     cell_prop.font = font1
     cell_prop.alignment = alignment_centre
 
+    date_save = str(datetime.datetime.now())
+    lol_save += 'Applicants/' + date_save + '.xlsx'
     wb.save(lol_save)
 
