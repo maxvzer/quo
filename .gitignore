@@ -4,7 +4,6 @@
 *.idea
 *.xml.
 .idea/
-Quo/.idea/
 Quo/localsettings.py
 Quo/main/migrations/
 
