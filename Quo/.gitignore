@@ -1,0 +1,9 @@
+*.*~
+*.pyc
+*.DS_Store
+*.idea
+*.xml.
+Quo/localsettings.py
+Quo/.idea/
+Quo/localsettings.py
+main/migrations/
