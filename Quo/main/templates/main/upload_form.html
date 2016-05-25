@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{header}}</h1>
+
+
+    {%if form.is_multipart%}
+
+        <form enctype="multipart/form-data" method="post" action="">
+            <table>
+                {{form}}
+                {% csrf_token %}
+                <input type="submit" class="btn" value="Импорт" name="mybtn">
+            </table>
+        </form>
+    {%else%}
+        <form method="post" action="">
+             </form>
+    {%endif%}
+
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ИнстаКоммерс</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- Fons Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Hover Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css">
+	<!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="../../static/main/css/main.css" >
+	</head>
+	<body>
+		<section class="mainWrapper">
+		<div class="col-lg-12 mainBox">
+			<div class="contentBox">
+					<div class="viewSubtitle">
+						<h1 class="viewTitle ">Количество записей: {{length}}</h1>
+							<div >
+								<a href="#" data-hover-text="Экспортировать" class="coralButton-hover">Excel</a>
+							</div>
+					</div>
+
+				 <div class="row">
+					<div class="table-responsive">
+						<table class="table ">
+							<tr class="tableHeader">
+								{% if 'FIO' in columns %}
+									<th>ФИО</th>
+								{% endif %}
+
+								{% if 'birth_date' in columns %}
+									<th>Дата рождения</th>
+								{% endif %}
+
+								{% if 'grop' in columns %}
+									<th>Учебная группа</th>
+								{% endif %}
+
+								{% if 'military' in columns %}
+									<th>Военкомат</th>
+								{% endif %}
+
+								{% if 'fitness' in columns %}
+									<th>Категория годности</th>
+								{% endif %}
+
+                                {% if 'personal_record' in columns %}
+									<th>Личное дело</th>
+								{% endif %}
+
+                                {% if 'VUS' in columns %}
+									<th>ВУС</th>
+								{% endif %}
+
+                                {% if 'grade' in columns %}
+									<th>Направление обучения</th>
+								{% endif %}
+
+								{% if 'passport' in columns %}
+									<th>Серия и номер паспорта</th>
+									<th>Кем и когда выдан</th>
+									<th>Домашний адрес (по паспорту)</th>
+									<th>Место рождения</th>
+								{% endif %}
+
+							</tr>
+							{% for value in values %}
+							<tr class="clientRow">
+								{% if 'FIO' in columns %}
+									<td>{{value.middle_name}} {{ value.first_name }} {{value.last_name}}</td>
+								{% endif %}
+
+								{% if 'birth_date' in columns %}
+									<td>{{ value.birth_date }}</td>
+								{% endif %}
+
+								{% if 'grop' in columns %}
+									<td>{{ value.faculty}}{{ value.department }}-{{ value.group }}</td>
+								{% endif %}
+
+								{% if 'military' in columns %}
+									<td>{{ value.title}}</td>
+								{% endif %}
+
+								{% if 'fitness' in columns %}
+									<td>{{ value.degree_of_fitness }}</td>
+								{% endif %}
+
+                                {% if 'personal_record' in columns %}
+									<td>{{ value.personal_record }}</td>
+								{% endif %}
+
+                                {% if 'VUS' in columns %}
+									<td>{{ value.OKSO }}</td>
+								{% endif %}
+
+                                {% if 'grade' in columns %}
+									<td>{{ value.grade }}</td>
+								{% endif %}
+
+								{% if 'passport' in columns %}
+									<td>{{ value.document_serial_number }} №{{ value.document_number }}</td>
+                                    <td>{{ value.issued_by }} 06.04.2005</td>
+                                    <td>{{ value.address }}</td>
+									<td>{{ value.birthplace }}</td>
+                                {% endif %}
+							</tr>
+							{% endfor %}
+
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>
